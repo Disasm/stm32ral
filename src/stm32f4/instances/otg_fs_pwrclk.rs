@@ -6,7 +6,7 @@
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f4::peripherals::otg_fs_pwrclk::Instance;
-pub use crate::stm32f4::peripherals::otg_fs_pwrclk::FS_PCGCCTL;
+pub use crate::stm32f4::peripherals::otg_fs_pwrclk::PCGCCTL;
 pub use crate::stm32f4::peripherals::otg_fs_pwrclk::{RegisterBlock, ResetValues};
 
 /// Access functions for the OTG_FS_PWRCLK peripheral instance
@@ -24,7 +24,7 @@ pub mod OTG_FS_PWRCLK {
 
     /// Reset values for each field in OTG_FS_PWRCLK
     pub const reset: ResetValues = ResetValues {
-        FS_PCGCCTL: 0x00000000,
+        PCGCCTL: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

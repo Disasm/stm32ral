@@ -2,21 +2,18 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f405, stm32f407, stm32f427, stm32f429
+//! Used by: stm32f401, stm32f405, stm32f407, stm32f411, stm32f427, stm32f429
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f4::peripherals::otg_fs_device_v2::Instance;
-pub use crate::stm32f4::peripherals::otg_fs_device_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::otg_fs_device_v2::{
-    DAINT, DAINTMSK, DIEPCTL0, DIEPCTL1, DIEPCTL2, DIEPCTL3, DIEPEMPMSK, DIEPINT0, DIEPINT1,
-    DIEPINT2, DIEPINT3, DIEPMSK, DIEPTSIZ0, DIEPTSIZ1, DIEPTSIZ2, DIEPTSIZ3, DOEPCTL0, DOEPCTL1,
-    DOEPCTL2, DOEPCTL3, DOEPINT0, DOEPINT1, DOEPINT2, DOEPINT3, DOEPMSK, DOEPTSIZ0, DOEPTSIZ1,
-    DOEPTSIZ2, DOEPTSIZ3, DTXFSTS0, DTXFSTS1, DTXFSTS2, DTXFSTS3, DVBUSDIS, DVBUSPULSE, FS_DCFG,
-    FS_DCTL, FS_DSTS,
+pub use crate::stm32f4::peripherals::otg_fs_global_v1::Instance;
+pub use crate::stm32f4::peripherals::otg_fs_global_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::otg_fs_global_v1::{
+    CID, DIEPTXF1, DIEPTXF2, DIEPTXF3, GAHBCFG, GCCFG, GINTMSK, GINTSTS, GNPTXFSIZ, GNPTXSTS,
+    GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSP, GRXSTSR, GUSBCFG, HPTXFSIZ,
 };
 
-/// Access functions for the OTG_FS_DEVICE peripheral instance
-pub mod OTG_FS_DEVICE {
+/// Access functions for the OTG_FS_GLOBAL peripheral instance
+pub mod OTG_FS_GLOBAL {
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -24,59 +21,39 @@ pub mod OTG_FS_DEVICE {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0x50000800,
+        addr: 0x50000000,
         _marker: ::core::marker::PhantomData,
     };
 
-    /// Reset values for each field in OTG_FS_DEVICE
+    /// Reset values for each field in OTG_FS_GLOBAL
     pub const reset: ResetValues = ResetValues {
-        FS_DCFG: 0x02200000,
-        FS_DCTL: 0x00000000,
-        FS_DSTS: 0x00000010,
-        DIEPMSK: 0x00000000,
-        DOEPMSK: 0x00000000,
-        DAINT: 0x00000000,
-        DAINTMSK: 0x00000000,
-        DVBUSDIS: 0x000017D7,
-        DVBUSPULSE: 0x000005B8,
-        DIEPEMPMSK: 0x00000000,
-        DIEPCTL0: 0x00000000,
-        DIEPCTL1: 0x00000000,
-        DIEPCTL2: 0x00000000,
-        DIEPCTL3: 0x00000000,
-        DOEPCTL0: 0x00008000,
-        DOEPCTL1: 0x00000000,
-        DOEPCTL2: 0x00000000,
-        DOEPCTL3: 0x00000000,
-        DIEPINT0: 0x00000080,
-        DIEPINT1: 0x00000080,
-        DIEPINT2: 0x00000080,
-        DIEPINT3: 0x00000080,
-        DOEPINT0: 0x00000080,
-        DOEPINT1: 0x00000080,
-        DOEPINT2: 0x00000080,
-        DOEPINT3: 0x00000080,
-        DIEPTSIZ0: 0x00000000,
-        DOEPTSIZ0: 0x00000000,
-        DIEPTSIZ1: 0x00000000,
-        DIEPTSIZ2: 0x00000000,
-        DIEPTSIZ3: 0x00000000,
-        DTXFSTS0: 0x00000000,
-        DTXFSTS1: 0x00000000,
-        DTXFSTS2: 0x00000000,
-        DTXFSTS3: 0x00000000,
-        DOEPTSIZ1: 0x00000000,
-        DOEPTSIZ2: 0x00000000,
-        DOEPTSIZ3: 0x00000000,
+        GOTGCTL: 0x00000800,
+        GOTGINT: 0x00000000,
+        GAHBCFG: 0x00000000,
+        GUSBCFG: 0x00000A00,
+        GRSTCTL: 0x20000000,
+        GINTSTS: 0x04000020,
+        GINTMSK: 0x00000000,
+        GRXSTSR: 0x00000000,
+        GRXFSIZ: 0x00000200,
+        GNPTXFSIZ: 0x00000200,
+        GNPTXSTS: 0x00080200,
+        GCCFG: 0x00000000,
+        CID: 0x00001000,
+        HPTXFSIZ: 0x02000600,
+        DIEPTXF1: 0x02000400,
+        DIEPTXF2: 0x02000400,
+        DIEPTXF3: 0x02000400,
+        GRXSTSP: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]
     #[allow(private_no_mangle_statics)]
     #[no_mangle]
-    static mut OTG_FS_DEVICE_TAKEN: bool = false;
+    static mut OTG_FS_GLOBAL_TAKEN: bool = false;
 
-    /// Safe access to OTG_FS_DEVICE
+    /// Safe access to OTG_FS_GLOBAL
     ///
     /// This function returns `Some(Instance)` if this instance is not
     /// currently taken, and `None` if it is. This ensures that if you
@@ -92,16 +69,16 @@ pub mod OTG_FS_DEVICE {
     #[inline]
     pub fn take() -> Option<Instance> {
         external_cortex_m::interrupt::free(|_| unsafe {
-            if OTG_FS_DEVICE_TAKEN {
+            if OTG_FS_GLOBAL_TAKEN {
                 None
             } else {
-                OTG_FS_DEVICE_TAKEN = true;
+                OTG_FS_GLOBAL_TAKEN = true;
                 Some(INSTANCE)
             }
         })
     }
 
-    /// Release exclusive access to OTG_FS_DEVICE
+    /// Release exclusive access to OTG_FS_GLOBAL
     ///
     /// This function allows you to return an `Instance` so that it
     /// is available to `take()` again. This function will panic if
@@ -111,15 +88,15 @@ pub mod OTG_FS_DEVICE {
     #[inline]
     pub fn release(inst: Instance) {
         external_cortex_m::interrupt::free(|_| unsafe {
-            if OTG_FS_DEVICE_TAKEN && inst.addr == INSTANCE.addr {
-                OTG_FS_DEVICE_TAKEN = false;
+            if OTG_FS_GLOBAL_TAKEN && inst.addr == INSTANCE.addr {
+                OTG_FS_GLOBAL_TAKEN = false;
             } else {
                 panic!("Released a peripheral which was not taken");
             }
         });
     }
 
-    /// Unsafely steal OTG_FS_DEVICE
+    /// Unsafely steal OTG_FS_GLOBAL
     ///
     /// This function is similar to take() but forcibly takes the
     /// Instance, marking it as taken irregardless of its previous
@@ -127,12 +104,12 @@ pub mod OTG_FS_DEVICE {
     #[cfg(not(feature = "nosync"))]
     #[inline]
     pub unsafe fn steal() -> Instance {
-        OTG_FS_DEVICE_TAKEN = true;
+        OTG_FS_GLOBAL_TAKEN = true;
         INSTANCE
     }
 }
 
-/// Raw pointer to OTG_FS_DEVICE
+/// Raw pointer to OTG_FS_GLOBAL
 ///
 /// Dereferencing this is unsafe because you are not ensured unique
 /// access to the peripheral, so you may encounter data races with
@@ -141,4 +118,4 @@ pub mod OTG_FS_DEVICE {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const OTG_FS_DEVICE: *const RegisterBlock = 0x50000800 as *const _;
+pub const OTG_FS_GLOBAL: *const RegisterBlock = 0x50000000 as *const _;

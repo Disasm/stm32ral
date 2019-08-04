@@ -19,10 +19,10 @@ pub mod flash_v1;
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod iwdg;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411", feature="stm32f412", feature="stm32f446", feature="stm32f469"))]
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f427", feature="stm32f429"))]
 pub mod otg_fs_device_v1;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411", feature="stm32f446"))]
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f427", feature="stm32f429"))]
 pub mod otg_fs_global_v1;
 
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
@@ -154,12 +154,6 @@ pub mod tim6_v1;
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f469"))]
 pub mod ethernet_ptp;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
-pub mod otg_fs_global_v2;
-
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
-pub mod otg_fs_device_v2;
-
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod can;
 
@@ -206,7 +200,10 @@ pub mod tim6_v2;
 pub mod tim12;
 
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413"))]
-pub mod otg_fs_global_v3;
+pub mod otg_fs_global_v2;
+
+#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f446", feature="stm32f469"))]
+pub mod otg_fs_device_v2;
 
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
 pub mod quadspi;

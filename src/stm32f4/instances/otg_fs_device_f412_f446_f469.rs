@@ -2,17 +2,17 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f401, stm32f411, stm32f412, stm32f446, stm32f469
+//! Used by: stm32f412, stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f4::peripherals::otg_fs_device_v1::Instance;
-pub use crate::stm32f4::peripherals::otg_fs_device_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::otg_fs_device_v1::{
-    DIEPCTL1, DIEPCTL2, DIEPCTL3, DIEPEMPMSK, DIEPINT0, DIEPINT1, DIEPINT2, DIEPINT3, DIEPTSIZ0,
-    DIEPTSIZ1, DIEPTSIZ2, DIEPTSIZ3, DOEPCTL0, DOEPCTL1, DOEPCTL2, DOEPCTL3, DOEPINT0, DOEPINT1,
-    DOEPINT2, DOEPINT3, DOEPTSIZ0, DOEPTSIZ1, DOEPTSIZ2, DOEPTSIZ3, DTXFSTS0, DTXFSTS1, DTXFSTS2,
-    DTXFSTS3, DVBUSDIS, DVBUSPULSE, FS_DAINT, FS_DAINTMSK, FS_DCFG, FS_DCTL, FS_DIEPCTL0,
-    FS_DIEPMSK, FS_DOEPMSK, FS_DSTS,
+pub use crate::stm32f4::peripherals::otg_fs_device_v2::Instance;
+pub use crate::stm32f4::peripherals::otg_fs_device_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::otg_fs_device_v2::{
+    DAINT, DAINTMSK, DCFG, DCTL, DIEPCTL0, DIEPCTL1, DIEPCTL2, DIEPCTL3, DIEPEMPMSK, DIEPINT0,
+    DIEPINT1, DIEPINT2, DIEPINT3, DIEPMSK, DIEPTSIZ0, DIEPTSIZ1, DIEPTSIZ2, DIEPTSIZ3, DOEPCTL0,
+    DOEPCTL1, DOEPCTL2, DOEPCTL3, DOEPINT0, DOEPINT1, DOEPINT2, DOEPINT3, DOEPMSK, DOEPTSIZ0,
+    DOEPTSIZ1, DOEPTSIZ2, DOEPTSIZ3, DSTS, DTXFSTS0, DTXFSTS1, DTXFSTS2, DTXFSTS3, DVBUSDIS,
+    DVBUSPULSE,
 };
 
 /// Access functions for the OTG_FS_DEVICE peripheral instance
@@ -30,17 +30,17 @@ pub mod OTG_FS_DEVICE {
 
     /// Reset values for each field in OTG_FS_DEVICE
     pub const reset: ResetValues = ResetValues {
-        FS_DCFG: 0x02200000,
-        FS_DCTL: 0x00000000,
-        FS_DSTS: 0x00000010,
-        FS_DIEPMSK: 0x00000000,
-        FS_DOEPMSK: 0x00000000,
-        FS_DAINT: 0x00000000,
-        FS_DAINTMSK: 0x00000000,
+        DCFG: 0x02200000,
+        DCTL: 0x00000000,
+        DSTS: 0x00000010,
+        DIEPMSK: 0x00000000,
+        DOEPMSK: 0x00000000,
+        DAINT: 0x00000000,
+        DAINTMSK: 0x00000000,
         DVBUSDIS: 0x000017D7,
         DVBUSPULSE: 0x000005B8,
         DIEPEMPMSK: 0x00000000,
-        FS_DIEPCTL0: 0x00000000,
+        DIEPCTL0: 0x00000000,
         DIEPCTL1: 0x00000000,
         DIEPCTL2: 0x00000000,
         DIEPCTL3: 0x00000000,

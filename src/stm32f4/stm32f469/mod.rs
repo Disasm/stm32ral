@@ -51,7 +51,7 @@ pub use super::instances::tim7;
 pub mod otg_fs_global;
 pub use super::instances::can;
 pub use super::instances::nvic_f427_f429_f446_f469 as nvic;
-pub use super::instances::otg_fs_device_f401_f411_f412_f446_f469 as otg_fs_device;
+pub use super::instances::otg_fs_device_f412_f446_f469 as otg_fs_device;
 pub use super::instances::otg_fs_host;
 pub use super::instances::otg_fs_pwrclk;
 pub mod flash;

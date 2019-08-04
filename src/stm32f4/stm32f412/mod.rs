@@ -50,7 +50,7 @@ pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
 pub use super::instances::nvic_stir;
-pub use super::instances::otg_fs_device_f401_f411_f412_f446_f469 as otg_fs_device;
+pub use super::instances::otg_fs_device_f412_f446_f469 as otg_fs_device;
 pub use super::instances::otg_fs_global_f412_f413 as otg_fs_global;
 pub use super::instances::otg_fs_host;
 pub use super::instances::otg_fs_pwrclk;
