@@ -2,14 +2,14 @@
 #![allow(non_camel_case_types)]
 //! USB on the go high speed
 //!
-//! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f405, stm32f407, stm32f427, stm32f429
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
 /// OTG_HS control and status register
-pub mod OTG_HS_GOTGCTL {
+pub mod GOTGCTL {
 
     /// Session request success
     pub mod SRQSCS {
@@ -153,7 +153,7 @@ pub mod OTG_HS_GOTGCTL {
 }
 
 /// OTG_HS interrupt register
-pub mod OTG_HS_GOTGINT {
+pub mod GOTGINT {
 
     /// Session end detected
     pub mod SEDET {
@@ -241,7 +241,7 @@ pub mod OTG_HS_GOTGINT {
 }
 
 /// OTG_HS AHB configuration register
-pub mod OTG_HS_GAHBCFG {
+pub mod GAHBCFG {
 
     /// Global interrupt mask
     pub mod GINT {
@@ -315,7 +315,7 @@ pub mod OTG_HS_GAHBCFG {
 }
 
 /// OTG_HS USB configuration register
-pub mod OTG_HS_GUSBCFG {
+pub mod GUSBCFG {
 
     /// FS timeout calibration
     pub mod TOCAL {
@@ -571,7 +571,7 @@ pub mod OTG_HS_GUSBCFG {
 }
 
 /// OTG_HS reset register
-pub mod OTG_HS_GRSTCTL {
+pub mod GRSTCTL {
 
     /// Core soft reset
     pub mod CSRST {
@@ -687,7 +687,7 @@ pub mod OTG_HS_GRSTCTL {
 }
 
 /// OTG_HS core interrupt register
-pub mod OTG_HS_GINTSTS {
+pub mod GINTSTS {
 
     /// Current mode of operation
     pub mod CMOD {
@@ -1040,7 +1040,7 @@ pub mod OTG_HS_GINTSTS {
     }
 
     /// Resume/remote wakeup detected interrupt
-    pub mod WKUINT {
+    pub mod WKUPINT {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
@@ -1055,7 +1055,7 @@ pub mod OTG_HS_GINTSTS {
 }
 
 /// OTG_HS interrupt mask register
-pub mod OTG_HS_GINTMSK {
+pub mod GINTMSK {
 
     /// Mode mismatch interrupt mask
     pub mod MMISM {
@@ -1422,10 +1422,10 @@ pub mod OTG_HS_GINTMSK {
     }
 }
 
-/// OTG_HS_GRXSTSR_Host and OTG_HS_GRXSTSR_Peripheral
-/// OTG_HS_GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
-/// OTG_HS_GRXSTSR_Peripheral: OTG_HS Receive status debug read register (peripheral mode mode)
-pub mod OTG_HS_GRXSTSR {
+/// GRXSTSR_Host and GRXSTSR_Peripheral
+/// GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
+/// GRXSTSR_Peripheral: OTG_HS Receive status debug read register (peripheral mode mode)
+pub mod GRXSTSR {
 
     /// Channel number
     pub mod CHNUM {
@@ -1512,20 +1512,20 @@ pub mod OTG_HS_GRXSTSR {
     }
 }
 
-/// OTG_HS_GRXSTSP_Host and OTG_HS_GRXSTSP_Peripheral
-/// OTG_HS_GRXSTSP_Host: OTG_HS status read and pop register (host mode)
-/// OTG_HS_GRXSTSP_Peripheral: OTG_HS status read and pop register (peripheral mode)
-pub mod OTG_HS_GRXSTSP {
-    pub use super::OTG_HS_GRXSTSR::BCNT;
-    pub use super::OTG_HS_GRXSTSR::CHNUM;
-    pub use super::OTG_HS_GRXSTSR::DPID;
-    pub use super::OTG_HS_GRXSTSR::EPNUM;
-    pub use super::OTG_HS_GRXSTSR::FRMNUM;
-    pub use super::OTG_HS_GRXSTSR::PKTSTS;
+/// GRXSTSP_Host and GRXSTSP_Peripheral
+/// GRXSTSP_Host: OTG_HS status read and pop register (host mode)
+/// GRXSTSP_Peripheral: OTG_HS status read and pop register (peripheral mode)
+pub mod GRXSTSP {
+    pub use super::GRXSTSR::BCNT;
+    pub use super::GRXSTSR::CHNUM;
+    pub use super::GRXSTSR::DPID;
+    pub use super::GRXSTSR::EPNUM;
+    pub use super::GRXSTSR::FRMNUM;
+    pub use super::GRXSTSR::PKTSTS;
 }
 
 /// OTG_HS Receive FIFO size register
-pub mod OTG_HS_GRXFSIZ {
+pub mod GRXFSIZ {
 
     /// RxFIFO depth
     pub mod RXFD {
@@ -1542,10 +1542,10 @@ pub mod OTG_HS_GRXFSIZ {
     }
 }
 
-/// OTG_HS_GNPTXFSIZ_Host and OTG_HS_TX0FSIZ_Peripheral
-/// OTG_HS_GNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
-/// OTG_HS_TX0FSIZ_Peripheral: Endpoint 0 transmit FIFO size (peripheral mode)
-pub mod OTG_HS {
+/// GNPTXFSIZ_Host and TX0FSIZ_Peripheral
+/// GNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
+/// TX0FSIZ_Peripheral: Endpoint 0 transmit FIFO size (peripheral mode)
+pub mod GNPTXFSIZ_Host {
 
     /// Nonperiodic transmit RAM start address
     pub mod NPTXFSA {
@@ -1605,7 +1605,7 @@ pub mod OTG_HS {
 }
 
 /// OTG_HS nonperiodic transmit FIFO/queue status register
-pub mod OTG_HS_GNPTXSTS {
+pub mod GNPTXSTS {
 
     /// Nonperiodic TxFIFO space available
     pub mod NPTXFSAV {
@@ -1651,7 +1651,7 @@ pub mod OTG_HS_GNPTXSTS {
 }
 
 /// OTG_HS general core configuration register
-pub mod OTG_HS_GCCFG {
+pub mod GCCFG {
 
     /// Power down
     pub mod PWRDWN {
@@ -1739,7 +1739,7 @@ pub mod OTG_HS_GCCFG {
 }
 
 /// OTG_HS core ID register
-pub mod OTG_HS_CID {
+pub mod CID {
 
     /// Product ID field
     pub mod PRODUCT_ID {
@@ -1757,7 +1757,7 @@ pub mod OTG_HS_CID {
 }
 
 /// OTG_HS Host periodic transmit FIFO size register
-pub mod OTG_HS_HPTXFSIZ {
+pub mod HPTXFSIZ {
 
     /// Host periodic TxFIFO start address
     pub mod PTXSA {
@@ -1789,7 +1789,7 @@ pub mod OTG_HS_HPTXFSIZ {
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF1 {
+pub mod DIEPTXF1 {
 
     /// IN endpoint FIFOx transmit RAM start address
     pub mod INEPTXSA {
@@ -1821,142 +1821,142 @@ pub mod OTG_HS_DIEPTXF1 {
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF2 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF2 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF3 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF3 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF4 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF4 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF5 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF5 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF6 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF6 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF7 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF7 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 pub struct RegisterBlock {
     /// OTG_HS control and status register
-    pub OTG_HS_GOTGCTL: RWRegister<u32>,
+    pub GOTGCTL: RWRegister<u32>,
 
     /// OTG_HS interrupt register
-    pub OTG_HS_GOTGINT: RWRegister<u32>,
+    pub GOTGINT: RWRegister<u32>,
 
     /// OTG_HS AHB configuration register
-    pub OTG_HS_GAHBCFG: RWRegister<u32>,
+    pub GAHBCFG: RWRegister<u32>,
 
     /// OTG_HS USB configuration register
-    pub OTG_HS_GUSBCFG: RWRegister<u32>,
+    pub GUSBCFG: RWRegister<u32>,
 
     /// OTG_HS reset register
-    pub OTG_HS_GRSTCTL: RWRegister<u32>,
+    pub GRSTCTL: RWRegister<u32>,
 
     /// OTG_HS core interrupt register
-    pub OTG_HS_GINTSTS: RWRegister<u32>,
+    pub GINTSTS: RWRegister<u32>,
 
     /// OTG_HS interrupt mask register
-    pub OTG_HS_GINTMSK: RWRegister<u32>,
+    pub GINTMSK: RWRegister<u32>,
 
-    /// OTG_HS_GRXSTSR_Host and OTG_HS_GRXSTSR_Peripheral
-    /// OTG_HS_GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
-    /// OTG_HS_GRXSTSR_Peripheral: OTG_HS Receive status debug read register (peripheral mode mode)
-    pub OTG_HS_GRXSTSR: RWRegister<u32>,
+    /// GRXSTSR_Host and GRXSTSR_Peripheral
+    /// GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
+    /// GRXSTSR_Peripheral: OTG_HS Receive status debug read register (peripheral mode mode)
+    pub GRXSTSR: RWRegister<u32>,
 
-    /// OTG_HS_GRXSTSP_Host and OTG_HS_GRXSTSP_Peripheral
-    /// OTG_HS_GRXSTSP_Host: OTG_HS status read and pop register (host mode)
-    /// OTG_HS_GRXSTSP_Peripheral: OTG_HS status read and pop register (peripheral mode)
-    pub OTG_HS_GRXSTSP: RWRegister<u32>,
+    /// GRXSTSP_Host and GRXSTSP_Peripheral
+    /// GRXSTSP_Host: OTG_HS status read and pop register (host mode)
+    /// GRXSTSP_Peripheral: OTG_HS status read and pop register (peripheral mode)
+    pub GRXSTSP: RWRegister<u32>,
 
     /// OTG_HS Receive FIFO size register
-    pub OTG_HS_GRXFSIZ: RWRegister<u32>,
+    pub GRXFSIZ: RWRegister<u32>,
 
-    /// OTG_HS_GNPTXFSIZ_Host and OTG_HS_TX0FSIZ_Peripheral
-    /// OTG_HS_GNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
-    /// OTG_HS_TX0FSIZ_Peripheral: Endpoint 0 transmit FIFO size (peripheral mode)
-    pub OTG_HS: RWRegister<u32>,
+    /// GNPTXFSIZ_Host and TX0FSIZ_Peripheral
+    /// GNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
+    /// TX0FSIZ_Peripheral: Endpoint 0 transmit FIFO size (peripheral mode)
+    pub GNPTXFSIZ_Host: RWRegister<u32>,
 
     /// OTG_HS nonperiodic transmit FIFO/queue status register
-    pub OTG_HS_GNPTXSTS: RORegister<u32>,
+    pub GNPTXSTS: RORegister<u32>,
 
     _reserved1: [u32; 2],
 
     /// OTG_HS general core configuration register
-    pub OTG_HS_GCCFG: RWRegister<u32>,
+    pub GCCFG: RWRegister<u32>,
 
     /// OTG_HS core ID register
-    pub OTG_HS_CID: RWRegister<u32>,
+    pub CID: RWRegister<u32>,
 
     _reserved2: [u32; 48],
 
     /// OTG_HS Host periodic transmit FIFO size register
-    pub OTG_HS_HPTXFSIZ: RWRegister<u32>,
+    pub HPTXFSIZ: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF1: RWRegister<u32>,
+    pub DIEPTXF1: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF2: RWRegister<u32>,
+    pub DIEPTXF2: RWRegister<u32>,
+
+    /// OTG_HS device IN endpoint transmit FIFO size register
+    pub DIEPTXF3: RWRegister<u32>,
+
+    /// OTG_HS device IN endpoint transmit FIFO size register
+    pub DIEPTXF4: RWRegister<u32>,
+
+    /// OTG_HS device IN endpoint transmit FIFO size register
+    pub DIEPTXF5: RWRegister<u32>,
 
     _reserved3: [u32; 4],
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF3: RWRegister<u32>,
+    pub DIEPTXF6: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF4: RWRegister<u32>,
-
-    /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF5: RWRegister<u32>,
-
-    /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF6: RWRegister<u32>,
-
-    /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF7: RWRegister<u32>,
+    pub DIEPTXF7: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub OTG_HS_GOTGCTL: u32,
-    pub OTG_HS_GOTGINT: u32,
-    pub OTG_HS_GAHBCFG: u32,
-    pub OTG_HS_GUSBCFG: u32,
-    pub OTG_HS_GRSTCTL: u32,
-    pub OTG_HS_GINTSTS: u32,
-    pub OTG_HS_GINTMSK: u32,
-    pub OTG_HS_GRXSTSR: u32,
-    pub OTG_HS_GRXSTSP: u32,
-    pub OTG_HS_GRXFSIZ: u32,
-    pub OTG_HS: u32,
-    pub OTG_HS_GNPTXSTS: u32,
-    pub OTG_HS_GCCFG: u32,
-    pub OTG_HS_CID: u32,
-    pub OTG_HS_HPTXFSIZ: u32,
-    pub OTG_HS_DIEPTXF1: u32,
-    pub OTG_HS_DIEPTXF2: u32,
-    pub OTG_HS_DIEPTXF3: u32,
-    pub OTG_HS_DIEPTXF4: u32,
-    pub OTG_HS_DIEPTXF5: u32,
-    pub OTG_HS_DIEPTXF6: u32,
-    pub OTG_HS_DIEPTXF7: u32,
+    pub GOTGCTL: u32,
+    pub GOTGINT: u32,
+    pub GAHBCFG: u32,
+    pub GUSBCFG: u32,
+    pub GRSTCTL: u32,
+    pub GINTSTS: u32,
+    pub GINTMSK: u32,
+    pub GRXSTSR: u32,
+    pub GRXSTSP: u32,
+    pub GRXFSIZ: u32,
+    pub GNPTXFSIZ_Host: u32,
+    pub GNPTXSTS: u32,
+    pub GCCFG: u32,
+    pub CID: u32,
+    pub HPTXFSIZ: u32,
+    pub DIEPTXF1: u32,
+    pub DIEPTXF2: u32,
+    pub DIEPTXF3: u32,
+    pub DIEPTXF4: u32,
+    pub DIEPTXF5: u32,
+    pub DIEPTXF6: u32,
+    pub DIEPTXF7: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

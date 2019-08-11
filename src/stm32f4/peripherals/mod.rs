@@ -157,17 +157,14 @@ pub mod ethernet_ptp;
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod can;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod otg_hs_global;
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
+pub mod otg_hs_global_v1;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod otg_hs_host;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod otg_hs_device;
-
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod otg_hs_pwrclk;
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
+pub mod otg_hs_device_v1;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
 pub mod sai1;
@@ -237,6 +234,15 @@ pub mod pwr_v3;
 
 #[cfg(any(feature="doc", feature="stm32f429", feature="stm32f469"))]
 pub mod dma2d;
+
+#[cfg(any(feature="doc", feature="stm32f446", feature="stm32f469"))]
+pub mod otg_hs_global_v2;
+
+#[cfg(any(feature="doc", feature="stm32f446", feature="stm32f469"))]
+pub mod otg_hs_device_v2;
+
+#[cfg(any(feature="doc", feature="stm32f446", feature="stm32f469"))]
+pub mod otg_hs_pwrclk;
 
 #[cfg(any(feature="doc", feature="stm32f469", feature="stm32f469"))]
 pub mod tim9_v2;

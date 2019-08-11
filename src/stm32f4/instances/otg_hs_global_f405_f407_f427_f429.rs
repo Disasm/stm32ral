@@ -2,18 +2,16 @@
 #![allow(non_camel_case_types)]
 //! USB on the go high speed
 //!
-//! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f405, stm32f407, stm32f427, stm32f429
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f4::peripherals::otg_hs_global::Instance;
-pub use crate::stm32f4::peripherals::otg_hs_global::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::otg_hs_global::{
-    OTG_HS, OTG_HS_CID, OTG_HS_DIEPTXF1, OTG_HS_DIEPTXF2, OTG_HS_DIEPTXF3, OTG_HS_DIEPTXF4,
-    OTG_HS_DIEPTXF5, OTG_HS_DIEPTXF6, OTG_HS_DIEPTXF7, OTG_HS_GAHBCFG, OTG_HS_GCCFG,
-    OTG_HS_GINTMSK, OTG_HS_GINTSTS, OTG_HS_GNPTXSTS, OTG_HS_GOTGCTL, OTG_HS_GOTGINT,
-    OTG_HS_GRSTCTL, OTG_HS_GRXFSIZ, OTG_HS_GRXSTSP, OTG_HS_GRXSTSR, OTG_HS_GUSBCFG,
-    OTG_HS_HPTXFSIZ,
+pub use crate::stm32f4::peripherals::otg_hs_global_v1::Instance;
+pub use crate::stm32f4::peripherals::otg_hs_global_v1::{
+    GNPTXFSIZ_Host, CID, DIEPTXF1, DIEPTXF2, DIEPTXF3, DIEPTXF4, DIEPTXF5, DIEPTXF6, DIEPTXF7,
+    GAHBCFG, GCCFG, GINTMSK, GINTSTS, GNPTXSTS, GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSP,
+    GRXSTSR, GUSBCFG, HPTXFSIZ,
 };
+pub use crate::stm32f4::peripherals::otg_hs_global_v1::{RegisterBlock, ResetValues};
 
 /// Access functions for the OTG_HS_GLOBAL peripheral instance
 pub mod OTG_HS_GLOBAL {
@@ -30,28 +28,28 @@ pub mod OTG_HS_GLOBAL {
 
     /// Reset values for each field in OTG_HS_GLOBAL
     pub const reset: ResetValues = ResetValues {
-        OTG_HS_GOTGCTL: 0x00000800,
-        OTG_HS_GOTGINT: 0x00000000,
-        OTG_HS_GAHBCFG: 0x00000000,
-        OTG_HS_GUSBCFG: 0x00000A00,
-        OTG_HS_GRSTCTL: 0x20000000,
-        OTG_HS_GINTSTS: 0x04000020,
-        OTG_HS_GINTMSK: 0x00000000,
-        OTG_HS_GRXSTSR: 0x00000000,
-        OTG_HS_GRXSTSP: 0x00000000,
-        OTG_HS_GRXFSIZ: 0x00000200,
-        OTG_HS: 0x00000200,
-        OTG_HS_GNPTXSTS: 0x00080200,
-        OTG_HS_GCCFG: 0x00000000,
-        OTG_HS_CID: 0x00001200,
-        OTG_HS_HPTXFSIZ: 0x02000600,
-        OTG_HS_DIEPTXF1: 0x02000400,
-        OTG_HS_DIEPTXF2: 0x02000400,
-        OTG_HS_DIEPTXF3: 0x02000400,
-        OTG_HS_DIEPTXF4: 0x02000400,
-        OTG_HS_DIEPTXF5: 0x02000400,
-        OTG_HS_DIEPTXF6: 0x02000400,
-        OTG_HS_DIEPTXF7: 0x02000400,
+        GOTGCTL: 0x00000800,
+        GOTGINT: 0x00000000,
+        GAHBCFG: 0x00000000,
+        GUSBCFG: 0x00000A00,
+        GRSTCTL: 0x20000000,
+        GINTSTS: 0x04000020,
+        GINTMSK: 0x00000000,
+        GRXSTSR: 0x00000000,
+        GRXSTSP: 0x00000000,
+        GRXFSIZ: 0x00000200,
+        GNPTXFSIZ_Host: 0x00000200,
+        GNPTXSTS: 0x00080200,
+        GCCFG: 0x00000000,
+        CID: 0x00001200,
+        HPTXFSIZ: 0x02000600,
+        DIEPTXF1: 0x02000400,
+        DIEPTXF2: 0x02000400,
+        DIEPTXF3: 0x02000400,
+        DIEPTXF4: 0x02000400,
+        DIEPTXF5: 0x02000400,
+        DIEPTXF6: 0x02000400,
+        DIEPTXF7: 0x02000400,
     };
 
     #[cfg(not(feature = "nosync"))]
